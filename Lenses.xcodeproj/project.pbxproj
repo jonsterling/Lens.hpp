@@ -1,0 +1,207 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FC00540613E397A400D4810A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC00540513E397A400D4810A /* main.cpp */; };
+		FC00540813E397A400D4810A /* Lenses.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC00540713E397A400D4810A /* Lenses.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FC0053FF13E397A400D4810A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				FC00540813E397A400D4810A /* Lenses.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FC00540113E397A400D4810A /* Lenses */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lenses; sourceTree = BUILT_PRODUCTS_DIR; };
+		FC00540513E397A400D4810A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		FC00540713E397A400D4810A /* Lenses.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Lenses.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FC0053FE13E397A400D4810A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FC0053F613E397A300D4810A = {
+			isa = PBXGroup;
+			children = (
+				FC00540413E397A400D4810A /* Lenses */,
+				FC00540213E397A400D4810A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FC00540213E397A400D4810A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FC00540113E397A400D4810A /* Lenses */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FC00540413E397A400D4810A /* Lenses */ = {
+			isa = PBXGroup;
+			children = (
+				FC00540513E397A400D4810A /* main.cpp */,
+				FC00540713E397A400D4810A /* Lenses.1 */,
+			);
+			path = Lenses;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FC00540013E397A400D4810A /* Lenses */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FC00540B13E397A400D4810A /* Build configuration list for PBXNativeTarget "Lenses" */;
+			buildPhases = (
+				FC0053FD13E397A400D4810A /* Sources */,
+				FC0053FE13E397A400D4810A /* Frameworks */,
+				FC0053FF13E397A400D4810A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Lenses;
+			productName = Lenses;
+			productReference = FC00540113E397A400D4810A /* Lenses */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FC0053F813E397A300D4810A /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = FC0053FB13E397A300D4810A /* Build configuration list for PBXProject "Lenses" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FC0053F613E397A300D4810A;
+			productRefGroup = FC00540213E397A400D4810A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FC00540013E397A400D4810A /* Lenses */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FC0053FD13E397A400D4810A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FC00540613E397A400D4810A /* main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		FC00540913E397A400D4810A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		FC00540A13E397A400D4810A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		FC00540C13E397A400D4810A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FC00540D13E397A400D4810A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FC0053FB13E397A300D4810A /* Build configuration list for PBXProject "Lenses" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC00540913E397A400D4810A /* Debug */,
+				FC00540A13E397A400D4810A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FC00540B13E397A400D4810A /* Build configuration list for PBXNativeTarget "Lenses" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FC00540C13E397A400D4810A /* Debug */,
+				FC00540D13E397A400D4810A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FC0053F813E397A300D4810A /* Project object */;
+}
