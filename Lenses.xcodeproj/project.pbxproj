@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		FC00540613E397A400D4810A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = FC00540513E397A400D4810A /* main.cpp */; };
-		FC00540813E397A400D4810A /* Lenses.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = FC00540713E397A400D4810A /* Lenses.1 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +17,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				FC00540813E397A400D4810A /* Lenses.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -27,7 +25,6 @@
 /* Begin PBXFileReference section */
 		FC00540113E397A400D4810A /* Lenses */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Lenses; sourceTree = BUILT_PRODUCTS_DIR; };
 		FC00540513E397A400D4810A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		FC00540713E397A400D4810A /* Lenses.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Lenses.1; sourceTree = "<group>"; };
 		FC00540F13E3B50300D4810A /* lens.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = lens.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +60,6 @@
 			children = (
 				FC00540513E397A400D4810A /* main.cpp */,
 				FC00540F13E3B50300D4810A /* lens.hpp */,
-				FC00540713E397A400D4810A /* Lenses.1 */,
 			);
 			path = Lenses;
 			sourceTree = "<group>";
@@ -209,6 +205,7 @@
 				FC00540D13E397A400D4810A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
