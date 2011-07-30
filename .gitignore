@@ -1,0 +1,8 @@
+*.xcodeproj/*.pbxuser
+*.xcodeproj/*.perspectivev3
+*/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.DS_Store
+*.TM_Completions.*
+
