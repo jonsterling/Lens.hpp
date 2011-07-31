@@ -1,6 +1,7 @@
-I'm going to assume that you know what Lenses are. In the future, I may
-define them here, just too lazy at the moment. The point of this readme
-is to explain how I implemented Lenses in C++.
+I'm going to assume that you know what Lenses are. In the meanwhile, check out 
+[these slides](http://twanvl.nl/files/lenses-talk-2011-05-17.pdf) for some 
+basic theory on Lenses. The point of this readme is to explain how I 
+implemented Lenses in C++.
 
 ## How to generalize member-access
 
