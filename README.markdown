@@ -94,7 +94,7 @@ class Toy
   std::string val(name);
 
 public:
-  Toy(std::string n) : _name(n) {}  
+  Toy(std::string n) : _name(n) {}
 };
 
 class Dog
@@ -105,4 +105,82 @@ class Dog
 public:
   Dog(std::string n, Toy t) : _name(n), _toy(t) {}
 }
+~~~~
+
+The hiccup here, though, is that we need to be able to determine the
+type of the current class in a general manner. Preferably, C++ would
+have a type keyword `This` or `Self`, which would point to the current
+class, but that's something we need to implement for ourselves. The way
+to do this is define a small utility class, `Derivable<T>`:
+
+~~~~cpp
+template <class T> class Derivable
+{
+  typedef T Self;
+};
+~~~~
+
+Thus, we don't need to pass `Toy` into the `val` macro, since it assumes
+that the class inherits the `Derivable` trait.
+
+
+##Deriving Show
+
+In Haskell, we can allow any datatype to be printed by deriving the
+`Show` type class automatically. This looks like:
+
+~~~~haskell
+data Toy = Toy String deriving Show
+data Dog = Dog String Toy deriving Show
+~~~~
+
+This seemed like an important thing to have in C++, so I've added a
+similar (static) facility for doing this, using a variadic template over
+lenses.
+
+~~~~cpp
+template< class T // The class of the object being "shown"
+        , class ...Lenses // The object's lenses, in order of desired appearance
+        >
+struct Show;
+~~~
+
+This can be used in a class as follows:
+
+~~~~cpp
+class Dog
+{
+  std::string val(name);
+  Toy val(toy);
+  
+  typedef Show<Dog,name,toy> show_t;
+
+public:
+  Dog(std::string n, Toy t) : _name(n), _toy(t) {}
+
+  std::string show() const
+  {
+    return show_t(*this).show();
+  }
+};
+
+const Toy t("squeaky");
+const Dog d("Tucker", t);
+std::cout << d.show() << std::endl; // => "Dog (Tucker, squeaky)"
+~~~~
+
+Of course, a macro `derive_show` has also been provided, which
+simpifies derivation by a lot:
+
+~~~~cpp
+class Dog
+{
+  std::string val(name);
+  Toy val(toy);
+
+public:
+  Dog(std::string n, Toy t) : _name(n), _toy(t) {}
+
+  derive_show(name,toy);
+};
 ~~~~
