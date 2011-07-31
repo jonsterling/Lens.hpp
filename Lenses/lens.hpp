@@ -9,9 +9,20 @@
 #ifndef Lenses_lens_hpp
 #define Lenses_lens_hpp
 
+#include "derivable.hpp"
+
+#define val(type, member)\
+  private: type _##member;\
+  public:\
+    typedef lens<Self, type, &Self::_##member> member;\
+    type get_##member() const { return Self::member(*this).get(); }\
+    Self set_##member(type a) const { return Self::member(*this).set(a); }
+
+
 template <class T, class R, R T::*member>
 class lens
 {
+protected:
   const T& t;
   
 public:
@@ -35,18 +46,13 @@ public:
 
 
 template <class OutsideLens, class InsideLens>
-class lens_comp
+struct lens_comp : public OutsideLens
 {
-  const typename OutsideLens::object_type & t;
-  
-public:
-  typedef typename OutsideLens::object_type object_type;
-  
-  lens_comp(const typename OutsideLens::object_type& t_) : t(t_) {}
+  lens_comp(const typename OutsideLens::object_type& t_) : OutsideLens(t_) {}
   
   typename InsideLens::member_type get()
   {
-    auto _this = OutsideLens(t);
+    auto _this = OutsideLens(this->t);
     auto get_this = _this.get();
     auto get_that = InsideLens(get_this);
     return get_that.get();
@@ -54,7 +60,7 @@ public:
   
   const typename OutsideLens::object_type set(typename InsideLens::member_type a)
   {
-    auto _this = OutsideLens(t);
+    auto _this = OutsideLens(this->t);
     
     auto get_this = _this.get();
     auto mod_that = InsideLens(get_this).set(a);
@@ -62,7 +68,20 @@ public:
   }
 };
 
-template <class OutsideLens, class InsideLens, class CenterLens>
-using lens_comp3 = lens_comp<lens_comp<OutsideLens, InsideLens>, CenterLens>;
+template <class Lens, class Transformer>
+struct lens_map : public Lens
+{
+  lens_map(const typename Lens::object_type& t_) : Lens(t_) {}
+  
+  typename Transformer::result_type get()
+  {
+    return Transformer()(Lens(this->t).get());
+  };
+  
+  typename Lens::object_type set(typename Transformer::argument_type a)
+  {
+    return Lens(this->t).set(Transformer()(a));
+  }
+};
 
 #endif

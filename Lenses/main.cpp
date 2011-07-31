@@ -8,47 +8,37 @@
 
 #include <iostream>
 #include "lens.hpp"
+#include "demo_types.hpp"
+#include "show.hpp"
 #include <functional>
+#include <algorithm>
 
-struct Toy
+struct make_uppercase : std::unary_function<std::string, std::string>
 {
-  std::string name;
+  std::string operator ()(const std::string input)
+  {
+    std::string string = input;
+    std::transform(string.begin(), string.end(), string.begin(), toupper);
+    return string;
+  };
 };
-
-struct Dog
-{
-  std::string name;
-  Toy toy;
-};
-
-struct Person
-{
-  std::string name;
-  Dog dog;
-  
-  friend std::ostream& operator<< (std::ostream& o, Person const& person);
-};
-
-std::ostream& operator<< (std::ostream& o, Person const& person)
-{
-  return o << person.name << " has a dog named " << person.dog.name << " whose favorite toy is " << person.dog.toy.name << ".";
-}
-
 
 int main (int argc, const char * argv[])
 {
-  typedef lens<Person,Dog,&Person::dog>       person_dog;
-  typedef lens<Dog,Toy,&Dog::toy>             dog_toy;
-  typedef lens<Toy,std::string,&Toy::name>    toy_name;
-  typedef lens_comp<person_dog, dog_toy>      person_dog_toy;
-  typedef lens_comp<person_dog_toy, toy_name> person_dog_toy_name;
+  typedef lens_comp<Person::dog, Dog::toy>     person_dog_toy;
+  typedef lens_comp<person_dog_toy, Toy::name> person_dog_toy_name;
   
-  const Dog tucker = { "tucky", { "squeaky" } };
-  const Person jon = { "jon", tucker };
+  typedef lens_map<person_dog_toy_name,make_uppercase> transform_toy;
+  
+  const Dog tucker("tucky", Toy("squeaky"));
+  const Person jon("jon", tucker);
   const Person jon2 = person_dog_toy_name(jon).set("fuzzy");
+  const Person jon3 = transform_toy(jon).set("asdfasdf");
   
-  std::cout << "rev 1: " << jon << std::endl;
-  std::cout << "rev 2: " << jon2 << std::endl;
+  std::cout << "rev 1: " << jon.show() << std::endl;
+  std::cout << "rev 2: " << jon2.show() << std::endl;
+  std::cout << "rev 3: " << jon3.show() << std::endl;
+  std::cout << tucker.show() << std::endl;
   
   return 0;
 }
