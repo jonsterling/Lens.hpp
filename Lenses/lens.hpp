@@ -14,9 +14,9 @@
 #define val(member)\
   _##member;\
   public:\
-    typedef lens<Self, typeof(_##member), &Self::_##member> member;\
-    const typeof(_##member)& get_##member() const { return Self::member(*this).get(); }\
-    const Self set_##member(const typeof(_##member)& a) const { return Self::member(*this).set(a); }\
+    typedef lens<Self, decltype(_##member), &Self::_##member> member;\
+    const decltype(_##member)& get_##member() const { return Self::member(*this).get(); }\
+    const Self set_##member(const decltype(_##member)& a) const { return Self::member(*this).set(a); }\
   private:
 
 
