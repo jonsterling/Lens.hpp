@@ -33,7 +33,7 @@ This could look like:
 ~~~~cpp
 class Toy
 {
-	std::string _name;
+  std::string _name;
   typedef lens<Toy,std::string,&Toy::_name> name;
 
 public:
@@ -56,7 +56,7 @@ class Dog
   std::string _name;
   Toy _toy;
   typedef lens<Dog,std::string,&Dog::_name> name;
-	typedef lens<Dog,Toy,&Dog::_toy> toy;
+  typedef lens<Dog,Toy,&Dog::_toy> toy;
 
 public:
   Dog(std::string n, Toy t) : _name(n), _toy(t) {}
