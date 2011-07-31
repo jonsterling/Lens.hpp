@@ -130,9 +130,14 @@ Lenses are composed by using the `lens_comp` veriadic template. For instance:
 ~~~~cpp
 typedef lens_comp<Person::dog,Dog::toy,Toy::name> person_dog_toy_name;
 
-Person jon("jon", Dog("tucker", Toy("squeaky")));
-std::string str = person_dog_toy_name(jon).get(); // => "squeaky"
+const Person jon("jon", Dog("tucker", Toy("squeaky")));
+const std::string str = person_dog_toy_name(jon).get(); // => "squeaky"
+
+const Person jon2 = person_dog_toy_name(jon).set("fuzzy");
+// Now, jon2 is a copy of jon, but with his the name of his Dog's Toy changed.
 ~~~~
+
+This is super excellent for dealing with deep structures.
 
 ##Deriving Show
 
