@@ -3,7 +3,7 @@
 //  Lenses
 //
 //  Created by Jonathan Sterling on 7/29/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Jonathan Sterling. All rights reserved.
 //
 
 #ifndef Lenses_lens_hpp
