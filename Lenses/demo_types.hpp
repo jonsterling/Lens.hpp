@@ -14,28 +14,30 @@
 
 class Toy : public Derivable<Toy>
 {
-  val(std::string, name);
-  Toy(std::string n) : _name(n) {}
+  std::string val(name);
   
+public:
+  Toy(std::string n) : _name(n) {}
   derive_show(name);
 };
 
 class Dog : public Derivable<Dog>
 {
-  val(std::string, name);
-  val(Toy, toy);
-  Dog(std::string n, Toy t) : _name(n), _toy(t) {}
+  std::string val(name);
+  Toy val(toy);
   
+public:
+  Dog(std::string n, Toy t) : _name(n), _toy(t) {}
   derive_show(name, toy);
 };
 
 class Person : public Derivable<Person>
 {
-  val(std::string, name);
-  val(Dog, dog);
+  std::string val(name);
+  Dog val(dog);
   
+public:
   Person(std::string n, Dog d) : _name(n), _dog(d) {}
-  
   derive_show(name, dog);
 };
 

@@ -62,9 +62,9 @@
 			isa = PBXGroup;
 			children = (
 				FC00540513E397A400D4810A /* main.cpp */,
+				FC00540F13E3B50300D4810A /* lens.hpp */,
 				FC2F3F6C13E5D471002F4C38 /* demo_types.hpp */,
 				FC2F3F7013E5EECC002F4C38 /* derivable.hpp */,
-				FC00540F13E3B50300D4810A /* lens.hpp */,
 				FC2F3F6E13E5E1D2002F4C38 /* show.hpp */,
 			);
 			path = Lenses;

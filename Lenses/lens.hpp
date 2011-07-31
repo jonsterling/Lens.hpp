@@ -11,12 +11,13 @@
 
 #include "derivable.hpp"
 
-#define val(type, member)\
-  private: type _##member;\
+#define val(member)\
+  _##member;\
   public:\
-    typedef lens<Self, type, &Self::_##member> member;\
-    type get_##member() const { return Self::member(*this).get(); }\
-    Self set_##member(type a) const { return Self::member(*this).set(a); }
+    typedef lens<Self, typeof(_##member), &Self::_##member> member;\
+    typeof(_##member) get_##member() const { return Self::member(*this).get(); }\
+    Self set_##member(typeof(_##member) a) const { return Self::member(*this).set(a); }\
+  private:
 
 
 template <class T, class R, R T::*member>
