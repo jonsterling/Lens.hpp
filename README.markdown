@@ -28,8 +28,7 @@ template <class A, class B, A B::*member_ptr>
 
 The most basic, raw way to use lenses in your classes is to provide a
 typedef to the correct instantiation of the `lens` template. Later, you
-can make new lenses by composing existing ones, or by mapping over them.
-This could look like:
+can make new lenses by composing existing ones. This could look like:
 
 ~~~~cpp
 class Toy
@@ -124,6 +123,16 @@ template <class T> class Derivable
 Thus, we don't need to pass `Toy` into the `val` macro, since it assumes
 that the class inherits the `Derivable` trait.
 
+###Composition
+
+Lenses are composed by using the `lens_comp` veriadic template. For instance:
+
+~~~~cpp
+typedef lens_comp<Person::dog,Dog::toy,Toy::name> person_dog_toy_name;
+
+Person jon("jon", Dog("tucker", Toy("squeaky")));
+std::string str = person_dog_toy_name(jon).get(); // => "squeaky"
+~~~~
 
 ##Deriving Show
 
