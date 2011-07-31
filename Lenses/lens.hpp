@@ -83,21 +83,4 @@ public:
   }
 };
 
-
-template <class Lens, class Transformer>
-struct lens_map : public Lens
-{
-  lens_map(const typename Lens::object_type& t_) : Lens(t_) {}
-  
-  const typename Transformer::result_type& get()
-  {
-    return Transformer()(Lens(this->t).get());
-  };
-  
-  const typename Lens::object_type set(const typename Transformer::argument_type& a)
-  {
-    return Lens(this->t).set(Transformer()(a));
-  }
-};
-
 #endif
