@@ -26,8 +26,7 @@ struct make_uppercase : std::unary_function<std::string, std::string>
 int main (int argc, const char * argv[])
 {
   typedef lens_comp<Person::dog, Dog::toy>     person_dog_toy;
-  typedef lens_comp<person_dog_toy, Toy::name> person_dog_toy_name;
-  
+  typedef lens_comp<Person::dog, Dog::toy, Toy::name> person_dog_toy_name;
   typedef lens_map<person_dog_toy_name,make_uppercase> transform_toy;
   
   const Dog tucker("tucky", Toy("squeaky"));

@@ -11,8 +11,7 @@
 
 #include "derivable.hpp"
 
-#define val(member)\
-  _##member;\
+#define val(member) _##member;\
   public:\
     typedef lens<Self, decltype(_##member), &Self::_##member> member;\
     const decltype(_##member)& get_##member() const { return Self::member(*this).get(); }\
@@ -46,28 +45,44 @@ public:
 };
 
 
-template <class OutsideLens, class InsideLens>
-struct lens_comp : public OutsideLens
+template <class... Lenses>
+struct lens_comp;
+
+template <class Outside, class Inside, class Center, class... Lenses>
+struct lens_comp<Outside,Inside,Center,Lenses...> : public lens_comp<Outside,lens_comp<Inside,Center>,Lenses...>
 {
-  lens_comp(const typename OutsideLens::object_type& t_) : OutsideLens(t_) {}
+protected:
+  typedef lens_comp<Outside,lens_comp<Inside,Center>,Lenses...> super;
+public:
+  lens_comp(const typename Outside::object_type& t_) : super(t_) {}
+};
+
+template <class Outside, class Inside>
+struct lens_comp<Outside, Inside> : public Outside
+{
+public:
+  lens_comp(const typename Outside::object_type& t_) : Outside(t_) {}
+  typedef typename Outside::object_type object_type;
+  typedef typename Inside::member_type member_type;
   
-  const typename InsideLens::member_type& get()
+  const typename Inside::member_type& get()
   {
-    auto _this = OutsideLens(this->t);
+    auto _this = Outside(this->t);
     auto get_this = _this.get();
-    auto get_that = InsideLens(get_this);
+    auto get_that = Inside(get_this);
     return get_that.get();
   }
   
-  const typename OutsideLens::object_type set(const typename InsideLens::member_type& a)
+  const typename Outside::object_type set(const typename Inside::member_type& a)
   {
-    auto _this = OutsideLens(this->t);
+    auto _this = Outside(this->t);
     
     auto get_this = _this.get();
-    auto mod_that = InsideLens(get_this).set(a);
+    auto mod_that = Inside(get_this).set(a);
     return _this.set(mod_that);
   }
 };
+
 
 template <class Lens, class Transformer>
 struct lens_map : public Lens
