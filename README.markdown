@@ -44,7 +44,7 @@ public:
     return Toy::name(*this).get();
   }
 
-  const Toy set_name(const std::string& n)
+  const Toy set_name(const std::string& n) const
   {
     return Toy::name(*this).set(n);
   }
@@ -66,7 +66,7 @@ public:
     return Dog::name(*this).get();
   }
 
-  const Dog set_name(const std::string& n)
+  const Dog set_name(const std::string& n) const
   {
     return Dog::name(*this).set(n);
   }
