@@ -16,7 +16,7 @@
   public:\
     typedef lens<Self, typeof(_##member), &Self::_##member> member;\
     const typeof(_##member)& get_##member() const { return Self::member(*this).get(); }\
-    const Self set_##member(typeof(_##member) a) const { return Self::member(*this).set(a); }\
+    const Self set_##member(const typeof(_##member)& a) const { return Self::member(*this).set(a); }\
   private:
 
 
@@ -37,7 +37,7 @@ public:
     return t.*member;
   }
   
-  const T set(R v)
+  const T set(const R& v)
   {
     T t_ = t;
     t_.*member = v;
@@ -59,7 +59,7 @@ struct lens_comp : public OutsideLens
     return get_that.get();
   }
   
-  const typename OutsideLens::object_type set(typename InsideLens::member_type a)
+  const typename OutsideLens::object_type set(const typename InsideLens::member_type& a)
   {
     auto _this = OutsideLens(this->t);
     
@@ -79,7 +79,7 @@ struct lens_map : public Lens
     return Transformer()(Lens(this->t).get());
   };
   
-  const typename Lens::object_type set(typename Transformer::argument_type a)
+  const typename Lens::object_type set(const typename Transformer::argument_type& a)
   {
     return Lens(this->t).set(Transformer()(a));
   }
